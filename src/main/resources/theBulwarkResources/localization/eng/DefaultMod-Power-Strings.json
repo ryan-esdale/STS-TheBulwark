@@ -1,0 +1,18 @@
+{
+        "theBulwark:CommonPower": {
+                "NAME": "Placeholder Power",
+                "DESCRIPTIONS": ["You applied #b", " keyword.", " keywords."]
+        },
+        "theBulwark:RarePower": {
+                "NAME": "Placeholder Power",
+                "DESCRIPTIONS": ["At the start of your turn, TOUCH #b", " enemy." , " enemies."]
+        },
+        "theBulwark:KineticBufferPower": {
+                "NAME": "Kinetic Buffer",
+                "DESCRIPTIONS": ["At the end of your turn take half of the #b", " damage stored."]
+        },
+        "theBulwark:SlipstreamPower": {
+                "NAME": "Slipstream",
+                "DESCRIPTIONS": ["Whenever you play a 0 cost card draw #b", " card.", " cards."]
+        }
+}

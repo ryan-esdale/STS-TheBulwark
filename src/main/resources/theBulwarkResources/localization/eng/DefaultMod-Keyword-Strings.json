@@ -1,0 +1,49 @@
+[
+  {
+    "NAMES": [
+      "keyword",
+      "keywords"
+    ],
+    "DESCRIPTION": "Whenever you play a card, gain 1 dexterity this turn only."
+  },
+  {
+    "PROPER_NAME": "Multiword Keyword",
+    "NAMES": [
+      "multiword keyword",
+      "multiword_keyword",
+      "multiword_keywords",
+      "multikey",
+      "multikeyword"
+    ],
+    "DESCRIPTION": "Make sure the first element in the NAMES is the same as your PROPER_NAME. The rest is to match keywords like the single word keyword."
+  },
+  {
+    "PROPER_NAME": "Buffer",
+    "NAMES": [
+      "buffer"
+    ],
+    "DESCRIPTION": "Stores damage within the #yKinetic #yBuffer."
+  },
+  {
+    "PROPER_NAME": "Cleanse",
+    "NAMES": [
+      "cleanse"
+    ],
+    "DESCRIPTION": "Removes damage from the #yKinetic #yBuffer."
+  },
+  {
+    "PROPER_NAME": "Kinetic Buffer",
+    "NAMES": [
+      "kinetic buffer",
+      "kinetic_buffer"
+    ],
+    "DESCRIPTION": "At the end of your turn take half of the damage stored by the Kinetic Buffer."
+  },
+  {
+    "PROPER_NAME": "Shock",
+    "NAMES": [
+      "shock"
+    ],
+    "DESCRIPTION": "Takes an additional 5% damage per stack. Stacks do not expire."
+  }
+]

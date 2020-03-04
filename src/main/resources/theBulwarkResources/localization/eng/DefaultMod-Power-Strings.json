@@ -14,5 +14,9 @@
         "theBulwark:SlipstreamPower": {
                 "NAME": "Slipstream",
                 "DESCRIPTIONS": ["Whenever you play a 0 cost card draw #b", " card.", " cards."]
+        },
+        "theBulwark:ShockPower": {
+                "NAME": "Shock",
+                "DESCRIPTIONS": ["Receives #b5% more damage from #yAttacks for each instance of Shock.", " (Receives #b", "% more damage)."]
         }
 }

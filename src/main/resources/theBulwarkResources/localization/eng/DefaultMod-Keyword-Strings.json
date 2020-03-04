@@ -44,6 +44,6 @@
     "NAMES": [
       "shock"
     ],
-    "DESCRIPTION": "Takes an additional 5% damage per stack. Stacks do not expire."
+    "DESCRIPTION": "Takes an additional 5% damage per stack. Does not expire."
   }
 ]

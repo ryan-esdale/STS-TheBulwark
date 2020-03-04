@@ -18,5 +18,9 @@
         "theBulwark:ShockPower": {
                 "NAME": "Shock",
                 "DESCRIPTIONS": ["Receives #b5% more damage from #yAttacks for each instance of Shock.", " (Receives #b", "% more damage)."]
+        },
+        "theBulwark:TitanFormPower": {
+                "NAME": "Titan Form",
+                "DESCRIPTIONS": ["At the start of your turn gain ", " #yPlated #yArmour"]
         }
 }

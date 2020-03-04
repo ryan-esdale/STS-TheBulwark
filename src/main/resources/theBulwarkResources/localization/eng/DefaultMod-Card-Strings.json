@@ -37,6 +37,14 @@
     "NAME": "Electric Punch",
     "DESCRIPTION": "Deal !D! damage. NL Apply 1 thebulwark:Shock."
   },
+  "theBulwark:BlockChain": {
+    "NAME": "Block Chain",
+    "DESCRIPTION": "Gain !B! Block. NL Add a copy of this to your hand with Ethereal and Exhaust."
+  },
+  "theBulwark:BlockChain_C": {
+    "NAME": "Block Chain",
+    "DESCRIPTION": "Ethereal. NL Gain !B! Block. NL Add a copy of this to your hand. NL Exhaust."
+  },
   "theBulwark:DefaultCommonPower": {
   "NAME": "Hold Place",
   "DESCRIPTION": "Gain !M! theBulwark:Keyword.",

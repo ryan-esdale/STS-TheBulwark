@@ -411,6 +411,8 @@ public class DefaultMod implements
         BaseMod.addCard(new Slipstream());
         BaseMod.addCard(new TitanForm());
         BaseMod.addCard(new ElectricPunch());
+        BaseMod.addCard(new BlockChain());
+        BaseMod.addCard(new BlockChain_C());
 
         //BaseMod.addCard(new DefaultSecondMagicNumberSkill());
         //BaseMod.addCard(new DefaultAttackWithVariable());
@@ -435,6 +437,7 @@ public class DefaultMod implements
         UnlockTracker.unlockCard(Slipstream.ID);
         UnlockTracker.unlockCard(TitanForm.ID);
         UnlockTracker.unlockCard(ElectricPunch.ID);
+        UnlockTracker.unlockCard(BlockChain.ID);
 
         //UnlockTracker.unlockCard(OrbSkill.ID);
         //UnlockTracker.unlockCard(DefaultSecondMagicNumberSkill.ID);

@@ -9,7 +9,7 @@
         },
         "theBulwark:KineticBufferPower": {
                 "NAME": "Kinetic Buffer",
-                "DESCRIPTIONS": ["At the end of your turn take half of the #b", " damage stored."]
+                "DESCRIPTIONS": ["At the end of your turn take half of the ", " damage stored."]
         },
         "theBulwark:SlipstreamPower": {
                 "NAME": "Slipstream",
@@ -22,5 +22,21 @@
         "theBulwark:TitanFormPower": {
                 "NAME": "Titan Form",
                 "DESCRIPTIONS": ["At the start of your turn gain ", " #yPlated #yArmour"]
+        },
+        "theBulwark:ThresholdPower": {
+                "NAME": "Threshold",
+                "DESCRIPTIONS": ["You are above threshold while the Kinetic Buffer holds more that half your current life in damage."]
+        },
+        "theBulwark:FortifiedPower": {
+                "NAME": "Fortified",
+                "DESCRIPTIONS": ["All incoming attacks damage is buffered. Ends when an attack is played."]
+        },
+        "theBulwark:ElectrifiedShieldPower": {
+                "NAME": "Electrified Shield",
+                "DECSRIPTIONS": ["Whenever you are attacked this turn apply ", " #yShock to your attacker."]
+        },
+        "theBulwark:NanobotCoatingPower": {
+                "NAME": "Nanobot Coating",
+                "DESCRIPTIONS": ["Whenever you #yBuffer damage gain ", " #yRegenerate"]
         }
 }

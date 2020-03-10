@@ -1,12 +1,13 @@
-package theBulwark.cards;
+package theBulwark.cards.tempCards;
 
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theBulwark.DefaultMod;
-import theBulwark.characters.TheDefault;
+import theBulwark.cards.AbstractDynamicCard;
 
 import static theBulwark.DefaultMod.makeCardPath;
 
@@ -25,7 +26,7 @@ public class BlockChain_C extends AbstractDynamicCard {
 
     // STAT DECLARATION
 
-    private static final CardRarity RARITY = CardRarity.COMMON; //  Up to you, I like auto-complete on these
+    private static final CardRarity RARITY = CardRarity.SPECIAL; //  Up to you, I like auto-complete on these
     private static final CardTarget TARGET = CardTarget.SELF;  //   since they don't change much.
     private static final CardType TYPE = CardType.SKILL;       //
     public static final CardColor COLOR = CardColor.COLORLESS;
@@ -51,7 +52,11 @@ public class BlockChain_C extends AbstractDynamicCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         AbstractDungeon.actionManager.addToBottom(new GainBlockAction(p, p, block));
-        AbstractDungeon.actionManager.addToBottom(new MakeTempCardInHandAction(new BlockChain_C(), 1));
+        AbstractCard temp = new BlockChain_C();
+        if( upgraded ){
+            temp.upgrade();
+        }
+        AbstractDungeon.actionManager.addToBottom(new MakeTempCardInHandAction(temp, 1));
     }
 
 

@@ -3,10 +3,14 @@ package theBulwark.powers;
 import basemod.interfaces.CloneablePowerInterface;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
+import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -20,10 +24,10 @@ import static theBulwark.DefaultMod.makePowerPath;
 
 //Gain 1 dex for the turn for each card played.
 
-public class ThresholdPower extends AbstractPower implements CloneablePowerInterface {
+public class ElectrifiedShieldPower extends AbstractPower implements CloneablePowerInterface {
     public AbstractCreature source;
 
-    public static final String POWER_ID = DefaultMod.makeID("ThresholdPower");
+    public static final String POWER_ID = DefaultMod.makeID("CommonPower");
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
@@ -33,7 +37,7 @@ public class ThresholdPower extends AbstractPower implements CloneablePowerInter
     private static final Texture tex84 = TextureLoader.getTexture(makePowerPath("placeholder_power84.png"));
     private static final Texture tex32 = TextureLoader.getTexture(makePowerPath("placeholder_power32.png"));
 
-    public ThresholdPower(final AbstractCreature owner, final AbstractCreature source, final int amount) {
+    public ElectrifiedShieldPower(final AbstractCreature owner, final AbstractCreature source, final int amount) {
         name = NAME;
         ID = POWER_ID;
 
@@ -51,33 +55,32 @@ public class ThresholdPower extends AbstractPower implements CloneablePowerInter
         updateDescription();
     }
 
-/*
-    // On use card, apply (amount) of Dexterity. (Go to the actual power card for the amount.)
     @Override
-    public void onUseCard(final AbstractCard card, final UseCardAction action) {
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(owner, owner,
-                new DexterityPower(owner, amount), amount));
+    public int onAttacked(DamageInfo info, int damageAmount) {
+        if (info.owner != null && info.type != DamageInfo.DamageType.THORNS && info.type != DamageInfo.DamageType.HP_LOSS && info.owner != this.owner) {
+            this.flash();
+            AbstractDungeon.actionManager.addToTop(
+                    new ApplyPowerAction( info.owner, this.owner, new ShockPower(info.owner, this.owner, this.amount), this.amount)
+            );
+        }
+
+        return damageAmount;
     }
 
-    // Note: If you want to apply an effect when a power is being applied you have 3 options:
-    //onInitialApplication is "When THIS power is first applied for the very first time only."
-    //onApplyPower is "When the owner applies a power to something else (only used by Sadistic Nature)."
-    //onReceivePowerPower from StSlib is "When any (including this) power is applied to the owner."
+    @Override
+    public void atStartOfTurn(){
+        AbstractDungeon.actionManager.addToBottom(
+                new RemoveSpecificPowerAction(this.owner, this.owner, ElectrifiedShieldPower.POWER_ID)
+        );
+    }
 
-
-
-    // Update the description when you apply this power. (i.e. add or remove an "s" in keyword(s))
     @Override
     public void updateDescription() {
-        if (amount == 1) {
-            description = DESCRIPTIONS[0] + amount + DESCRIPTIONS[1];
-        } else if (amount > 1) {
-            description = DESCRIPTIONS[0] + amount + DESCRIPTIONS[2];
-        }
+        description = DESCRIPTIONS[0] + amount + DESCRIPTIONS[1];
     }
-*/
+
     @Override
     public AbstractPower makeCopy() {
-        return new ThresholdPower(owner, source, amount);
+        return new ElectrifiedShieldPower(owner, source, amount);
     }
 }

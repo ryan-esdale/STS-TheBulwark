@@ -35,16 +35,97 @@
   },
   "theBulwark:ElectricPunch": {
     "NAME": "Electric Punch",
-    "DESCRIPTION": "Deal !D! damage. NL Apply 1 thebulwark:Shock."
+    "DESCRIPTION": "Deal !D! damage. NL Apply !M! thebulwark:Shock."
   },
   "theBulwark:BlockChain": {
     "NAME": "Block Chain",
-    "DESCRIPTION": "Gain !B! Block. NL Add a copy of this to your hand with Ethereal and Exhaust."
+    "DESCRIPTION": "Gain !B! Block. NL thebulwark:Recursive."
   },
   "theBulwark:BlockChain_C": {
     "NAME": "Block Chain",
-    "DESCRIPTION": "Ethereal. NL Gain !B! Block. NL Add a copy of this to your hand. NL Exhaust."
+    "DESCRIPTION": "Ethereal. NL Gain !B! Block. NL thebulwark:Recursive. NL Exhaust."
   },
+  "theBulwark:PowerDrain": {
+    "NAME": "Power Drain",
+    "DESCRIPTION": "Deal !D! Damage. NL thebulwark:Buffer !M!. NL Next turn, gain [E]."
+  },
+  "theBulwark:BaitedBlow": {
+    "NAME": "Baited Blow",
+    "DESCRIPTION": "Deal !D! Damage. NL Gain 1 Vulnerable."
+  },
+  "theBulwark:Pressurise": {
+    "NAME": "Pressurise",
+    "DESCRIPTION": "Deal !D! Damage. NL Apply !M! Weak. NL Exhaust"
+  },
+  "theBulwark:SeizeAdvantage": {
+    "NAME": "Seize Advantage",
+    "DESCRIPTION": "Deal !D! Damage. NL Gain !M! Dexterity. NL At the end of your turn lose !M! Dexterity."
+  },
+  "theBulwark:DeceleratingAssault": {
+    "NAME": "Decelerating Assault",
+    "DESCRIPTION": "Deal !D! Damage. NL Lose 1 Strength this turn. NL thebulwark:Recursive."
+  },
+  "theBulwark:DeceleratingAssault_C": {
+    "NAME": "Decelerating Assault",
+    "DESCRIPTION": "Ethereal. NL Deal !D! damage. NL Lose 1 Strength this turn. NL thebulwark:Recursive. NL Exhaust."
+  },
+  "theBulwark:VagueSwipe": {
+    "NAME": "Vague Swipe",
+    "DESCRIPTION": "Deal !D! Damage to ALL enemies. NL thebulwark:Threshold."
+  },
+  "theBulwark:SingleOut": {
+    "NAME": "Single Out",
+    "DESCRIPTION": "Deal !D! Damage. NL thebulwark:Threshold."
+  },
+  "theBulwark:CautiousStrike": {
+    "NAME": "Cautious Strike",
+    "DESCRIPTION": "Deal !D! Damage. NL Become thebulwark:Fortified."
+  },
+  "theBulwark:ElectrifiedShield": {
+    "NAME": "Electrified Shield",
+    "DESCRIPTION": "Gain !B! Block. NL Whenever you are attacked this turn apply !M! thebulwark:Shock to the attacker."
+  },
+  "theBulwark:Brace": {
+    "NAME": "Brace",
+    "DESCRIPTION": "Draw !M! card for each 5 damage stored in the Kinetic Buffer",
+    "UPGRADE_DESCRIPTION": "Draw !M! cards for each 5 damage stored in the Kinetic Buffer",
+    "EXTENDED_DESCRIPTION": ["NL (Draws "," cards)."]
+  },
+  "theBulwark:SacrificialComponent": {
+    "NAME": "Sacrificial Component",
+    "DESCRIPTION": "Exhaust 1 card. NL thebulwark:Cleanse !M!."
+  },
+  "theBulwark:RelievePressure": {
+    "NAME": "Relieve Pressure",
+    "DESCRIPTION": "Gain !B! Block. NL thebulwark:Cleanse !M!."
+  },
+  "theBulwark:ArmouredShove": {
+    "NAME": "Armoured Shove",
+    "DESCRIPTION": "Deal !D! Damage to ALL enemies. NL Gain !B! Block."
+  },
+  "theBulwark:MomentsPeace": {
+    "NAME": "Moments Peace",
+    "DESCRIPTION": "Gain Block equal to the damage buffered. Then thebulwark:Cleanse all buffered damage."
+  },
+  "theBulwark:LiquidMetalCoating": {
+    "NAME": "Liquid Metal Coating",
+    "DESCRIPTION": "Gain !M! Regenerate. NL Exhaust."
+  },
+  "theBulwark:Overcharge": {
+    "NAME": "Overcharge",
+    "DESCRIPTION": "Gain [E]. NL thebulwark:Buffer 5 Damage.",
+    "UPGRADE_DESCRIPTION": "Gain [E] [E]. NL thebulwark:Buffer 5 Damage."
+  },
+  "theBulwark:NanobotCoating": {
+    "NAME": "Nanobot Coating",
+    "DESCRIPTION": "Whenever you thebulwark:Buffer Damage gain !M! Regenerate."
+  },
+
+
+
+
+
+
   "theBulwark:DefaultCommonPower": {
   "NAME": "Hold Place",
   "DESCRIPTION": "Gain !M! theBulwark:Keyword.",

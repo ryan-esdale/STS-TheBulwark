@@ -20,10 +20,10 @@ import static theBulwark.DefaultMod.makePowerPath;
 
 //Gain 1 dex for the turn for each card played.
 
-public class ThresholdPower extends AbstractPower implements CloneablePowerInterface {
+public class NanobotCoatingPower extends AbstractPower implements CloneablePowerInterface {
     public AbstractCreature source;
 
-    public static final String POWER_ID = DefaultMod.makeID("ThresholdPower");
+    public static final String POWER_ID = DefaultMod.makeID("CommonPower");
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
@@ -33,7 +33,7 @@ public class ThresholdPower extends AbstractPower implements CloneablePowerInter
     private static final Texture tex84 = TextureLoader.getTexture(makePowerPath("placeholder_power84.png"));
     private static final Texture tex32 = TextureLoader.getTexture(makePowerPath("placeholder_power32.png"));
 
-    public ThresholdPower(final AbstractCreature owner, final AbstractCreature source, final int amount) {
+    public NanobotCoatingPower(final AbstractCreature owner, final AbstractCreature source, final int amount) {
         name = NAME;
         ID = POWER_ID;
 
@@ -51,33 +51,13 @@ public class ThresholdPower extends AbstractPower implements CloneablePowerInter
         updateDescription();
     }
 
-/*
-    // On use card, apply (amount) of Dexterity. (Go to the actual power card for the amount.)
-    @Override
-    public void onUseCard(final AbstractCard card, final UseCardAction action) {
-        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(owner, owner,
-                new DexterityPower(owner, amount), amount));
-    }
-
-    // Note: If you want to apply an effect when a power is being applied you have 3 options:
-    //onInitialApplication is "When THIS power is first applied for the very first time only."
-    //onApplyPower is "When the owner applies a power to something else (only used by Sadistic Nature)."
-    //onReceivePowerPower from StSlib is "When any (including this) power is applied to the owner."
-
-
-
-    // Update the description when you apply this power. (i.e. add or remove an "s" in keyword(s))
     @Override
     public void updateDescription() {
-        if (amount == 1) {
-            description = DESCRIPTIONS[0] + amount + DESCRIPTIONS[1];
-        } else if (amount > 1) {
-            description = DESCRIPTIONS[0] + amount + DESCRIPTIONS[2];
-        }
+        description = DESCRIPTIONS[0] + amount + DESCRIPTIONS[1];
     }
-*/
+
     @Override
     public AbstractPower makeCopy() {
-        return new ThresholdPower(owner, source, amount);
+        return new NanobotCoatingPower(owner, source, amount);
     }
 }

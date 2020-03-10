@@ -45,7 +45,7 @@ public class RecklessBlow extends AbstractDynamicCard {
 
         // STAT DECLARATION
 
-        private static final CardRarity RARITY = CardRarity.COMMON; //  Up to you, I like auto-complete on these
+        private static final CardRarity RARITY = CardRarity.BASIC; //  Up to you, I like auto-complete on these
         private static final CardTarget TARGET = CardTarget.ENEMY;  //   since they don't change much.
         private static final CardType TYPE = CardType.ATTACK;       //
         public static final CardColor COLOR = TheDefault.Enums.COLOR_GRAY;
@@ -71,7 +71,7 @@ public class RecklessBlow extends AbstractDynamicCard {
         public void use(AbstractPlayer p, AbstractMonster m) {
             AbstractDungeon.actionManager.addToBottom(
                     new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
-            AbstractDungeon.actionManager.addToBottom( new ApplyPowerAction(p, p, new KineticBufferPower(p, DAMAGE)));
+            AbstractDungeon.actionManager.addToBottom( new ApplyPowerAction(p, p, new KineticBufferPower(p, damage)));
         }
 
 

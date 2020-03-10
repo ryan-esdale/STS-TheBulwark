@@ -26,7 +26,7 @@ public class BufferCleanse extends AbstractDynamicCard {
 
     // STAT DECLARATION 	
 
-    private static final CardRarity RARITY = CardRarity.UNCOMMON;
+    private static final CardRarity RARITY = CardRarity.BASIC;
     private static final CardTarget TARGET = CardTarget.SELF;
     private static final CardType TYPE = CardType.SKILL;
     public static final CardColor COLOR = TheDefault.Enums.COLOR_GRAY;
@@ -38,7 +38,7 @@ public class BufferCleanse extends AbstractDynamicCard {
     //private static final int UPGRADE_PLUS_BLOCK = 2;
 
     private static final int CLEANSE = 7;
-    private static final int UPGRADE_PLUS_CLEANSE = 9;
+    private static final int UPGRADE_PLUS_CLEANSE = 2;
 
     // /STAT DECLARATION/
 

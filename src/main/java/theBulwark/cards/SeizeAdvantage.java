@@ -7,13 +7,14 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.DexterityPower;
+import com.megacrit.cardcrawl.powers.LoseDexterityPower;
 import theBulwark.DefaultMod;
 import theBulwark.characters.TheDefault;
-import theBulwark.powers.ShockPower;
 
 import static theBulwark.DefaultMod.makeCardPath;
 
-public class ElectricPunch extends AbstractDynamicCard {
+public class SeizeAdvantage extends AbstractDynamicCard {
 
     /*
      * "Hey, I wanna make a bunch of cards now." - You, probably.
@@ -22,7 +23,7 @@ public class ElectricPunch extends AbstractDynamicCard {
      * Copy all of the code here (Ctrl+A > Ctrl+C)
      * Ctrl+Shift+A and search up "file and code template"
      * Press the + button at the top and name your template whatever it is for - "AttackCard" or "PowerCard" or something up to you.
-     * Read up on the instructions at the bottom. Basically replace anywhere you'd put your cards name with ElectricPunch
+     * Read up on the instructions at the bottom. Basically replace anywhere you'd put your cards name with SeizeAdvantage
      * And then you can do custom ones like $ {DAMAGE} and $ {TARGET} if you want.
      * I'll leave some comments on things you might consider replacing with what.
      *
@@ -35,8 +36,8 @@ public class ElectricPunch extends AbstractDynamicCard {
 
     // TEXT DECLARATION
 
-    public static final String ID = DefaultMod.makeID(ElectricPunch.class.getSimpleName()); // USE THIS ONE FOR THE TEMPLATE;
-    public static final String IMG = makeCardPath("Attack.png");// "public static final String IMG = makeCardPath("ElectricPunch.png");
+    public static final String ID = DefaultMod.makeID(SeizeAdvantage.class.getSimpleName()); // USE THIS ONE FOR THE TEMPLATE;
+    public static final String IMG = makeCardPath("Attack.png");// "public static final String IMG = makeCardPath("SeizeAdvantage.png");
     // This does mean that you will need to have an image with the same NAME as the card in your image folder for it to run correctly.
 
 
@@ -50,20 +51,18 @@ public class ElectricPunch extends AbstractDynamicCard {
     private static final CardType TYPE = CardType.ATTACK;       //
     public static final CardColor COLOR = TheDefault.Enums.COLOR_GRAY;
 
-    private static final int COST = 1;  // COST = 1
-    private static final int UPGRADED_COST = 1; // UPGRADED_COST = 1
+    private static final int COST = 2;  // COST = 2
+    private static final int UPGRADED_COST = 2; // UPGRADED_COST = 2
 
     private static final int DAMAGE = 10;    // DAMAGE = 
-    private static final int UPGRADE_PLUS_DMG = 0;  // UPGRADE_PLUS_DMG = 0
+    private static final int UPGRADE_PLUS_DMG = 5;  // UPGRADE_PLUS_DMG = 5
 
-    private static final int MAGIC = 1;
+    private static final int MAGIC = 2;
     private static final int UPGRADE_PLUS_MAGIC = 1;
-
     // /STAT DECLARATION/
 
 
-    //public CardTemplate() { // public ElectricPunch() - This one and the one right under the imports are the most important ones, don't forget them
-    public ElectricPunch() {
+    public SeizeAdvantage() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         baseDamage = DAMAGE;
         baseMagicNumber = magicNumber = MAGIC;
@@ -76,7 +75,10 @@ public class ElectricPunch extends AbstractDynamicCard {
         AbstractDungeon.actionManager.addToBottom(
                 new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
         AbstractDungeon.actionManager.addToBottom(
-                new ApplyPowerAction(m, p, new ShockPower(m, p, magicNumber), magicNumber)
+                new ApplyPowerAction(p, p, new DexterityPower(p, magicNumber), magicNumber )
+        );
+        AbstractDungeon.actionManager.addToBottom(
+                new ApplyPowerAction(p, p, new LoseDexterityPower(p, magicNumber), magicNumber)
         );
     }
 
@@ -87,8 +89,8 @@ public class ElectricPunch extends AbstractDynamicCard {
         if (!upgraded) {
             upgradeName();
             upgradeDamage(UPGRADE_PLUS_DMG);
-            upgradeMagicNumber(UPGRADE_PLUS_MAGIC);
             upgradeBaseCost(UPGRADED_COST);
+            upgradeMagicNumber(UPGRADE_PLUS_MAGIC);
             initializeDescription();
         }
     }

@@ -18,12 +18,10 @@ import com.megacrit.cardcrawl.helpers.CardHelper;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.localization.*;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
-import com.megacrit.cardcrawl.unlock.cards.defect.UndoUnlock;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import theBulwark.cards.*;
-import theBulwark.cards.tempCards.BlockChain_C;
-import theBulwark.cards.tempCards.DeceleratingAssault_C;
+import theBulwark.cards.tempCards.*;
 import theBulwark.characters.TheDefault;
 import theBulwark.events.IdentityCrisisEvent;
 import theBulwark.potions.PlaceholderPotion;
@@ -403,11 +401,12 @@ public class DefaultMod implements
         // Don't comment out/delete these cards (yet). You need 1 of each type and rarity (technically) for your game not to crash
         // when generating card rewards/shop screen items.
         
+        BaseMod.addCard(new OrbSkill());
         BaseMod.addCard(new Strike_Gray());
         BaseMod.addCard(new Defend_Gray());
         BaseMod.addCard(new BufferCleanse());
-        BaseMod.addCard(new RecklessBlow());
         BaseMod.addCard(new Retaliate());
+        BaseMod.addCard(new RecklessBlow());
         BaseMod.addCard(new Prod());
         BaseMod.addCard(new Slipstream());
         BaseMod.addCard(new TitanForm());
@@ -416,22 +415,9 @@ public class DefaultMod implements
         BaseMod.addCard(new BlockChain_C());
         BaseMod.addCard(new PowerDrain());
         BaseMod.addCard(new BaitedBlow());
-        BaseMod.addCard(new Pressurise());
-        BaseMod.addCard(new SeizeAdvantage());
-        BaseMod.addCard(new DeceleratingAssault());
-        BaseMod.addCard(new DeceleratingAssault_C());
-        BaseMod.addCard(new VagueSwipe());
-        BaseMod.addCard(new SingleOut());
-        BaseMod.addCard(new CautiousStrike());
-        BaseMod.addCard(new ElectrifiedShield());
-        BaseMod.addCard(new Brace());
-        BaseMod.addCard(new SacrificialComponent());
-        BaseMod.addCard(new RelievePressure());
-        BaseMod.addCard(new ArmouredShove());
-        BaseMod.addCard(new MomentsPeace());
-        BaseMod.addCard(new LiquidMetalCoating());
-        BaseMod.addCard(new Overcharge());
-        BaseMod.addCard(new NanobotCoating());
+
+        BaseMod.addCard(new DefaultRareAttack());
+        BaseMod.addCard(new DefaultRareSkill());
 
         logger.info("Making sure the cards are unlocked.");
         // Unlock the cards
@@ -447,25 +433,11 @@ public class DefaultMod implements
         UnlockTracker.unlockCard(TitanForm.ID);
         UnlockTracker.unlockCard(ElectricPunch.ID);
         UnlockTracker.unlockCard(BlockChain.ID);
-        UnlockTracker.unlockCard(BlockChain_C.ID);
         UnlockTracker.unlockCard(PowerDrain.ID);
         UnlockTracker.unlockCard(BaitedBlow.ID);
-        UnlockTracker.unlockCard(Pressurise.ID);
-        UnlockTracker.unlockCard(SeizeAdvantage.ID);
-        UnlockTracker.unlockCard(DeceleratingAssault.ID);
-        UnlockTracker.unlockCard(DeceleratingAssault_C.ID);
-        UnlockTracker.unlockCard(VagueSwipe.ID);
-        UnlockTracker.unlockCard(SingleOut.ID);
-        UnlockTracker.unlockCard(CautiousStrike.ID);
-        UnlockTracker.unlockCard(ElectrifiedShield.ID);
-        UnlockTracker.unlockCard(Brace.ID);
-        UnlockTracker.unlockCard(SacrificialComponent.ID);
-        UnlockTracker.unlockCard(RelievePressure.ID);
-        UnlockTracker.unlockCard(ArmouredShove.ID);
-        UnlockTracker.unlockCard(MomentsPeace.ID);
-        UnlockTracker.unlockCard(LiquidMetalCoating.ID);
-        UnlockTracker.unlockCard(Overcharge.ID);
-        UnlockTracker.unlockCard(NanobotCoating.ID);
+
+        UnlockTracker.unlockCard(DefaultRareAttack.ID);
+        UnlockTracker.unlockCard(DefaultRareSkill.ID);
 
         logger.info("Done adding cards!");
     }

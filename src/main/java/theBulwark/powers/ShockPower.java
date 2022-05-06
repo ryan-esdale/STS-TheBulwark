@@ -11,7 +11,6 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.DexterityPower;
@@ -43,7 +42,7 @@ public class ShockPower extends AbstractPower implements CloneablePowerInterface
         this.amount = amount;
         this.source = source;
 
-        type = PowerType.DEBUFF;
+        type = PowerType.BUFF;
         isTurnBased = false;
 
         // We load those txtures here.
@@ -55,15 +54,7 @@ public class ShockPower extends AbstractPower implements CloneablePowerInterface
 
     @Override
     public float atDamageReceive(float damage, DamageInfo.DamageType type) {
-        return type == DamageInfo.DamageType.NORMAL ? damage * (1.0F + (float)this.amount * 0.05F) : damage;
-    }
-
-    @Override
-    public void updateDescription(){
-        this.description = DESCRIPTIONS[0];
-        if (this.amount != 0) {
-            this.description = this.description + DESCRIPTIONS[1] + this.amount * 5 + DESCRIPTIONS[2];
-        }
+        return type == DamageInfo.DamageType.NORMAL ? damage * (1.0F + (float)this.amount * 0.5F) : damage;
     }
 
     @Override

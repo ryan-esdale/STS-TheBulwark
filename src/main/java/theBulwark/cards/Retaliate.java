@@ -10,7 +10,6 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import theBulwark.DefaultMod;
 import theBulwark.characters.TheDefault;
-import theBulwark.relics.KineticBufferRelic;
 
 import static theBulwark.DefaultMod.makeCardPath;
 

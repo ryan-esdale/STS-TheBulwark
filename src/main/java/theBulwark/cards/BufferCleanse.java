@@ -38,7 +38,7 @@ public class BufferCleanse extends AbstractDynamicCard {
     //private static final int UPGRADE_PLUS_BLOCK = 2;
 
     private static final int CLEANSE = 7;
-    private static final int UPGRADE_PLUS_CLEANSE = 2;
+    private static final int UPGRADE_PLUS_CLEANSE = 9;
 
     // /STAT DECLARATION/
 

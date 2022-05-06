@@ -13,11 +13,9 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.DexterityPower;
-import com.megacrit.cardcrawl.powers.RegenPower;
 import theBulwark.DefaultMod;
 import theBulwark.util.TextureLoader;
 
@@ -70,54 +68,6 @@ public class KineticBufferPower extends AbstractPower implements CloneablePowerI
         return reducedDamageAmount;
     }
 */
-
-    private void applyThreshold( int healAmount){
-        DefaultMod.logger.info("Health Moving from "+this.owner.currentHealth+" to "+ (this.owner.currentHealth+healAmount) );
-        DefaultMod.logger.info("Threshold showing "+this.amount+" over "+ (this.owner.currentHealth+healAmount)/2 );
-        if( this.amount >= (this.owner.currentHealth+healAmount)/2F && !this.owner.hasPower(ThresholdPower.POWER_ID)){
-            DefaultMod.logger.info("Adding threshold" );
-            AbstractDungeon.actionManager.addToBottom(
-                    new ApplyPowerAction(this.owner, this.owner, new ThresholdPower(this.owner, this.owner, 1))
-            );
-        }else if( this.amount < (this.owner.currentHealth+healAmount)/2F && this.owner.hasPower(ThresholdPower.POWER_ID) ){
-            DefaultMod.logger.info( "Removing Threshold");
-            AbstractDungeon.actionManager.addToBottom(
-                    new ReducePowerAction(this.owner, this.owner, ThresholdPower.POWER_ID, 1)
-            );
-        }
-    }
-
-    //Apply Threshold if buffered damage is over half of current life
-    @Override
-    public int onHeal( int healAmount ){
-        applyThreshold(healAmount);
-        return healAmount;
-    }
-
-    @Override
-    public int onLoseHp( int damageAmount ){
-        applyThreshold(-damageAmount);
-        return damageAmount;
-    }
-
-    @Override
-    public void stackPower(int stackAmount){
-        super.stackPower(stackAmount);
-
-        if( this.owner.hasPower(NanobotCoatingPower.POWER_ID) ){
-            AbstractDungeon.actionManager.addToBottom(
-                    new ApplyPowerAction(this.owner, this.owner, new RegenPower(this.owner, this.owner.getPower(NanobotCoatingPower.POWER_ID).amount))
-            );
-        }
-        applyThreshold(0);
-    }
-
-    @Override
-    public void reducePower(int reduceAmount){
-        super.reducePower(reduceAmount);
-        applyThreshold(0);
-    }
-
     @Override
     public void atEndOfTurn(boolean isPlayer) {
 
@@ -141,7 +91,7 @@ public class KineticBufferPower extends AbstractPower implements CloneablePowerI
     // Update the description when you apply this power. (i.e. add or remove an "s" in keyword(s))
     @Override
     public void updateDescription() {
-        this.description = DESCRIPTIONS[0] + FontHelper.colorString(String.valueOf(this.amount), "b") + DESCRIPTIONS[1];
+        description = DESCRIPTIONS[0] + amount + DESCRIPTIONS[1];
     }
 
     @Override

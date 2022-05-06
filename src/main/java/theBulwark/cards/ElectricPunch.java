@@ -45,7 +45,7 @@ public class ElectricPunch extends AbstractDynamicCard {
 
     // STAT DECLARATION
 
-    private static final CardRarity RARITY = CardRarity.COMMON; //  Up to you, I like auto-complete on these
+    private static final CardRarity RARITY = CardRarity.UNCOMMON; //  Up to you, I like auto-complete on these
     private static final CardTarget TARGET = CardTarget.ENEMY;  //   since they don't change much.
     private static final CardType TYPE = CardType.ATTACK;       //
     public static final CardColor COLOR = TheDefault.Enums.COLOR_GRAY;
@@ -56,9 +56,6 @@ public class ElectricPunch extends AbstractDynamicCard {
     private static final int DAMAGE = 10;    // DAMAGE = 
     private static final int UPGRADE_PLUS_DMG = 0;  // UPGRADE_PLUS_DMG = 0
 
-    private static final int MAGIC = 1;
-    private static final int UPGRADE_PLUS_MAGIC = 1;
-
     // /STAT DECLARATION/
 
 
@@ -66,7 +63,6 @@ public class ElectricPunch extends AbstractDynamicCard {
     public ElectricPunch() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         baseDamage = DAMAGE;
-        baseMagicNumber = magicNumber = MAGIC;
     }
 
 
@@ -76,7 +72,7 @@ public class ElectricPunch extends AbstractDynamicCard {
         AbstractDungeon.actionManager.addToBottom(
                 new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
         AbstractDungeon.actionManager.addToBottom(
-                new ApplyPowerAction(m, p, new ShockPower(m, p, magicNumber), magicNumber)
+                new ApplyPowerAction(m, p, new ShockPower(m, p, 1), 1)
         );
     }
 
@@ -87,7 +83,6 @@ public class ElectricPunch extends AbstractDynamicCard {
         if (!upgraded) {
             upgradeName();
             upgradeDamage(UPGRADE_PLUS_DMG);
-            upgradeMagicNumber(UPGRADE_PLUS_MAGIC);
             upgradeBaseCost(UPGRADED_COST);
             initializeDescription();
         }

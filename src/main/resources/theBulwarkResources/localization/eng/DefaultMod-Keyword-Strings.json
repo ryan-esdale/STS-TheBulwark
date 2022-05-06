@@ -45,26 +45,5 @@
       "shock"
     ],
     "DESCRIPTION": "Takes an additional 5% damage per stack. Does not expire."
-  },
-  {
-    "PROPER_NAME": "Recursive",
-    "NAMES": [
-      "recursive"
-    ],
-    "DESCRIPTION": "When played add a copy of this to your hand with #yEthereal and #yExhaust."
-  },
-  {
-    "PROPER_NAME": "Threshold",
-    "NAMES": [
-      "threshold"
-    ],
-    "DESCRIPTION": "Threshold cards will change effects when the #yKinetic #yBuffer holds more than half your current life."
-  },
-  {
-    "PROPER_NAME": "Fortified",
-    "NAMES": [
-      "fortified"
-    ],
-    "DESCRIPTION": "While Fortified all incoming attack damage is #yBuffered. Ends when any attack is played."
   }
 ]

@@ -10,8 +10,6 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.helpers.FontHelper;
-import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.DexterityPower;
@@ -54,16 +52,10 @@ public class TitanFormPower extends AbstractPower implements CloneablePowerInter
         updateDescription();
     }
 
-    // At the start of the turn, gain Plated Armour.
+    // At the end of the turn, gain Plated Armour.
     @Override
-    public void atStartOfTurnPostDraw() {
-        this.flash();
+    public void atEndOfTurn(final boolean isPlayer) {
         AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(this.owner, this.owner, new PlatedArmorPower(this.owner, this.amount), this.amount));
-    }
-
-    @Override
-    public void updateDescription(){
-        this.description = DESCRIPTIONS[0] + FontHelper.colorString(String.valueOf(this.amount), "y") + DESCRIPTIONS[1];
     }
 
     @Override

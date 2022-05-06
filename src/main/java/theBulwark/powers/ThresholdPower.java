@@ -51,7 +51,6 @@ public class ThresholdPower extends AbstractPower implements CloneablePowerInter
         updateDescription();
     }
 
-/*
     // On use card, apply (amount) of Dexterity. (Go to the actual power card for the amount.)
     @Override
     public void onUseCard(final AbstractCard card, final UseCardAction action) {
@@ -65,7 +64,7 @@ public class ThresholdPower extends AbstractPower implements CloneablePowerInter
     //onReceivePowerPower from StSlib is "When any (including this) power is applied to the owner."
 
 
-
+/*
     // Update the description when you apply this power. (i.e. add or remove an "s" in keyword(s))
     @Override
     public void updateDescription() {

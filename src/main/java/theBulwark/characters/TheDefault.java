@@ -9,7 +9,6 @@ import com.esotericsoftware.spine.AnimationState;
 import com.evacipated.cardcrawl.modthespire.lib.SpireEnum;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -21,21 +20,13 @@ import com.megacrit.cardcrawl.helpers.CardLibrary;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.ScreenShake;
 import com.megacrit.cardcrawl.localization.CharacterStrings;
-import com.megacrit.cardcrawl.powers.AbstractPower;
-import com.megacrit.cardcrawl.powers.RegenPower;
 import com.megacrit.cardcrawl.screens.CharSelectInfo;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
-import com.megacrit.cardcrawl.vfx.combat.BlockImpactLineEffect;
-import com.megacrit.cardcrawl.vfx.combat.BlockedNumberEffect;
-import com.megacrit.cardcrawl.vfx.combat.BlockedWordEffect;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import theBulwark.DefaultMod;
 import theBulwark.cards.*;
-import theBulwark.powers.FortifiedPower;
 import theBulwark.powers.KineticBufferPower;
-import theBulwark.powers.NanobotCoatingPower;
-import theBulwark.powers.ThresholdPower;
 import theBulwark.relics.KineticBufferRelic;
 
 import java.util.ArrayList;
@@ -182,7 +173,7 @@ public class TheDefault extends CustomPlayer {
         retVal.add(BufferCleanse.ID);
         retVal.add(RecklessBlow.ID);
 
-        //Testing cards
+        retVal.add(TitanForm.ID);
 
 
         return retVal;
@@ -217,24 +208,16 @@ public class TheDefault extends CustomPlayer {
             damageAmount = 1;
         }
 
-        if(this.hasPower(KineticBufferPower.POWER_ID) && info.owner != this && info.owner != null && info.type != DamageInfo.DamageType.THORNS) {
-            int reducedDmg;
-            if( this.hasPower(FortifiedPower.POWER_ID) ){
-                reducedDmg = damageAmount;
-                damageAmount = 0;
-            }else {
-                reducedDmg = damageAmount / 2;
-                DefaultMod.logger.info("Reducing damage by half because of Buffer Power");
-                if (damageAmount % 2 == 0) {
-                    damageAmount = damageAmount / 2;
-                } else {
-                    damageAmount = (damageAmount / 2) + 1;
-                }
+        if(this.hasPower("theBulwark:KineticBufferPower") && info.owner != this && info.owner != null && info.type != DamageInfo.DamageType.THORNS) {
+            DefaultMod.logger.info("Reducing damage by half because of Buffer Power");
+            //damageAmount = damageAmount/2;
+            int reducedDmg = damageAmount/2;
+            if( damageAmount%2 == 0 ){
+                damageAmount = damageAmount/2;
+            }else{
+                damageAmount = (damageAmount/2)+1;
             }
-
             AbstractDungeon.actionManager.addToTop(new ApplyPowerAction(this, this, new KineticBufferPower(this,0), reducedDmg));
-
-
         }
 
         info.output = damageAmount;
